@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BackendSecurityService } from 'src/app/+Services/backend-security.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class SigninComponent {
+export class SignUpComponent {
+
   constructor(private backend: BackendSecurityService,
     private _snackBar: MatSnackBar,
-    private router: Router) { }
+    private router: Router,
+    private fb: FormBuilder) { }
   masseage: string = '';
   busy: boolean = false;
   keepMe: boolean = false;
@@ -52,5 +54,19 @@ export class SigninComponent {
       this.busy = false;
     });
   }
-}
 
+
+  // registrationForm: FormGroup;
+
+  // constructor(private fb: FormBuilder) {
+  //   this.registrationForm = this.fb.group({
+  //     name: ['', Validators.required],
+  //     lastName: ['', Validators.required],
+  //     phoneNumber: ['', Validators.required],
+  //     password: ['', Validators.required]
+  //   });
+  // }
+  // onSubmit() {
+  //   // اطلاعات فرم اینجا ارسال شوند
+  // }
+}

@@ -11,12 +11,21 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {HttpClientModule} from '@angular/common/http';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SignUpComponent } from './+Pages/sign-up/sign-up.component';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
+    SignUpComponent,
+
     
   ],
   imports: [
@@ -29,7 +38,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
 
   ],
   providers: [],

@@ -1,0 +1,36 @@
+<div id="Screen">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <div mat-card-avatar class="login-image"></div>
+        <mat-card-title>سامانه ثبت نام سفارش غذا</mat-card-title>
+          <mat-card-subtitle>شرکت نوین نویسان</mat-card-subtitle>
+        </mat-card-header>
+      <form class="login-form">
+        <mat-form-field class="login-full-width">
+          <mat-label>شماره همراه</mat-label>
+          <input type="tel" matInput [formControl]="usernameFormControl" placeholder="مثال:09xxxxxx">
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            شماره همراه اجباریست
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <form class="login-form">
+        <mat-form-field class="login-full-width">
+          <mat-label>کلمه عبور </mat-label>
+          <input type="password" matInput [formControl]="passwordFormControl" placeholder="مثال:hosein123@">
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            کلمه عبور اجباری است
+          </mat-error>
+        </mat-form-field>
+        <mat-checkbox name="keepMe" [(ngModel)]="keepMe" color="primary">من را به خاطر بسپار</mat-checkbox>
+        <mat-progress-bar *ngIf="busy==true" mode="indeterminate"></mat-progress-bar>
+      </form>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions *ngIf="busy==false">
+        <button (click)="check()" [routerLink]="'/signin'" mat-raised-button color="primary">ورود</button>&nbsp;&nbsp;
+        <button mat-raised-button  color="accent">ثبت نام</button>
+      </mat-card-actions>
+    </mat-card>
+    
+  </div>
