@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>افزودن رستوران</h1>
+<div mat-dialog-content>
+    <form class="login-form">
+        <mat-form-field class="login-full-width">
+          <mat-label>عنوان رستوران</mat-label>
+          <input type="tel" matInput [formControl]="titleFormControl" placeholder="مثال:سفره خانه بابامهدی">
+          <mat-error *ngIf="titleFormControl.hasError('required')">
+            عنوان رستوران اجباری است
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="login-full-width">
+          <mat-label>آدرس رستوران</mat-label>
+          <input type="tel" matInput [formControl]="addressFormControl" placeholder="مثال:همدان خیبان بوعلی">
+          <mat-error *ngIf="addressFormControl.hasError('required')">
+            عنوان رستوران اجباری است
+          </mat-error>
+        </mat-form-field>
+      </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" cdkFocusInitial>تایید</button>
+  <button mat-raised-button color="warn" matDialogClose>انصراف</button>
+</div>

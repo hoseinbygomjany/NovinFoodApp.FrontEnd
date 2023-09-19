@@ -15,10 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SignUpComponent } from './+Pages/sign-up/sign-up.component';
-
-
-
-
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -42,6 +39,7 @@ import { SignUpComponent } from './+Pages/sign-up/sign-up.component';
     HttpClientModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatRadioModule
 
   ],
   providers: [],

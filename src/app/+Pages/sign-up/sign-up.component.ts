@@ -10,63 +10,49 @@ import { BackendSecurityService } from 'src/app/+Services/backend-security.servi
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-
   constructor(private backend: BackendSecurityService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,) { }
   masseage: string = '';
   busy: boolean = false;
-  keepMe: boolean = false;
-  usernameFormControl = new FormControl('', [Validators.required]);
-  passwordFormControl = new FormControl('', [Validators.required]);
-  check() {
+  // keepMe: boolean = false;
+  registerform = this.fb.group({
+    username: [''],
+    password: [''],
+    fullname: [''],
+    type: [''],
+  });
+  register() {
     this.busy = true;
-    let username: string | undefined = this.usernameFormControl.value?.toString();
-    let password: string | undefined = this.passwordFormControl.value?.toString();
-    this.backend.signin(username ?? '', password ?? '').subscribe(r => {
-
-      let result = r as any;
-      if (result.isOk == false) {
-        this.masseage = (r as any).masseage;
-        this._snackBar.open(this.masseage, '', {
-          duration: 4000
-        });
-        this.passwordFormControl.setValue('');
-      }
-      else {
-        sessionStorage.setItem('token', result.token);
-        if (this.keepMe == true) {
-          localStorage.setItem('token', result.token);
-        }
-        switch (result.type) {
-          case 'systemAdmin':
-            this.router.navigate(['/admins']);
-            break;
-          case 'RestaurantOwner':
-            this.router.navigate(['/restaurants']);
-            break;
-          case 'Customer':
-            this.router.navigate(['/customers']);
-            break;
-        }
-      }
-      this.busy = false;
+    let username: string | undefined = this.registerform.controls.username.value?.toString();
+    let password: string | undefined = this.registerform.controls.password.value?.toString();
+    let type: number | undefined = Number(this.registerform.controls.type.value?.toString());
+    let fullname: string | undefined = this.registerform.controls.fullname.value?.toString();
+    this.backend.signup(username ?? '', password ?? '',fullname ?? '',type??2).subscribe(r => 
+    {
+      this._snackBar.open('ثبت با موفقیت انجام شد', '', {
+        duration: 4000
+      }).afterDismissed().subscribe(t=>{
+        this.router.navigate(['/signin']);
+      });
     });
+    console.log(this.registerform)
   }
-
-
-  // registrationForm: FormGroup;
-
-  // constructor(private fb: FormBuilder) {
-  //   this.registrationForm = this.fb.group({
-  //     name: ['', Validators.required],
-  //     lastName: ['', Validators.required],
-  //     phoneNumber: ['', Validators.required],
-  //     password: ['', Validators.required]
-  //   });
-  // }
-  // onSubmit() {
-  //   // اطلاعات فرم اینجا ارسال شوند
-  // }
 }
+
+
+// registrationForm: FormGroup;
+
+// constructor(private fb: FormBuilder) {
+//   this.registrationForm = this.fb.group({
+//     name: ['', Validators.required],
+//     lastName: ['', Validators.required],
+//     phoneNumber: ['', Validators.required],
+//     password: ['', Validators.required]
+//   });
+// }
+// onSubmit() {
+//   // اطلاعات فرم اینجا ارسال شوند
+// }
+
