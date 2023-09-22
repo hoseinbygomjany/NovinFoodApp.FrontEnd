@@ -18,11 +18,23 @@ export class SignUpComponent {
   busy: boolean = false;
   // keepMe: boolean = false;
   registerform = this.fb.group({
-    username: [''],
-    password: [''],
-    fullname: [''],
-    type: [''],
+    // username: [''],
+    // password: [''],
+    // fullname: [''],
+    // type: [''],
+    username:['',[Validators.required,Validators.maxLength(11),Validators.minLength(8)]],
+    password:['',[Validators.required,Validators.maxLength(100),Validators.minLength(8)]],
+    fullname:['',[Validators.required,Validators.maxLength(100),Validators.minLength(2)]],
+    type:['',[Validators.required]]
   });
+  // registerform(){
+
+  // }
+
+
+
+
+
   register() {
     this.busy = true;
     let username: string | undefined = this.registerform.controls.username.value?.toString();
@@ -38,6 +50,18 @@ export class SignUpComponent {
       });
     });
     console.log(this.registerform)
+  }
+  keyone(PhoneNumber:KeyboardEvent){
+    if (PhoneNumber.key=='a'){
+      PhoneNumber.preventDefault();
+    }
+  }
+
+  keytow(fullname:KeyboardEvent){
+    if (fullname.key>='0' && fullname.key<='9') {
+      fullname.preventDefault();
+      
+    }
   }
 }
 

@@ -6,7 +6,7 @@
       <mat-card-subtitle>شرکت نوین نویسان</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="registerform" class="login-form">
+      <form  [formGroup]="registerform" class="login-form">
         &nbsp;&nbsp;
         <label>من</label>
         <mat-radio-group color="primary" formControlName="type" aria-label="انتخاب کنید">
@@ -15,26 +15,26 @@
         </mat-radio-group>
         <mat-form-field class="login-full-width">
           <mat-label>شماره همراه</mat-label>
-          <input type="text" matInput formControlName="username" placeholder="مثال:09xxxxxx">
-          <!-- <mat-error *ngIf="usernameFormControl.hasError('required')">
-              شماره همراه اجباریست
-            </mat-error> -->
+          <input (keypress)="keyone($event)" type="text" matInput formControlName="username" placeholder="مثال:09xxxxxx">
+          <mat-error *ngIf="registerform.controls['username'].hasError('required')">
+            <strong> شماره همراه اجباریست</strong>
+            </mat-error>
         </mat-form-field>
       </form>
       <form [formGroup]="registerform" class="login-form">
         <mat-form-field class="login-full-width">
           <mat-label>نام نام خانوادگی</mat-label>
-          <input type="text" matInput formControlName="fullname" placeholder="مثال:علی کریمی">
-          <!-- <mat-error *ngIf="usernameFormControl.hasError('required')">
-              شماره همراه اجباریست
-            </mat-error> -->
+          <input (keypress)="keytow($event)" type="text" matInput formControlName="fullname" placeholder="مثال:علی کریمی">
+          <mat-error *ngIf="registerform.controls['fullname'].hasError('required')">
+            <strong>  نام نام خانوادگی اجباریست</strong>
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="login-full-width">
           <mat-label>کلمه عبور </mat-label>
           <input type="password" matInput formControlName="password" placeholder="مثال:hosein123@">
-          <!-- <mat-error *ngIf="passwordFormControl.hasError('required')">
-              کلمه عبور اجباری است
-            </mat-error> -->
+          <mat-error *ngIf="registerform.controls['password'].hasError('required')">
+            <strong> رمز عبور  اجباریست</strong>
+          </mat-error>
         </mat-form-field>
       </form>
       <mat-progress-bar *ngIf="busy==true" mode="indeterminate"></mat-progress-bar>

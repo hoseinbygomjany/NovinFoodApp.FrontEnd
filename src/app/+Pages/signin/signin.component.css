@@ -1,7 +1,20 @@
 #Screen {
     /* background-color: rgb(158, 158, 158); */
-    background-image: url('../../../assets/Images/back.jpg');
+    /* background-image: url('../../../assets/Images/back.jpg'); */
+    /* background-image: url('../../../assets/Images/p1.png');  */
+    /* background-image: url('../../../assets/Images/p3.jpeg'); */
+    /* background-image: url('../../../assets/Images/p4.jpeg'); */
+    /* شروع تست */
+    background-image: url('../../../assets/Images/a1.jpg');
+
+    background-repeat: no-repeat;
     background-position: center;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-origin: content-box, padding-box;
 
     min-height: 100vh;
     display: flex;
@@ -43,4 +56,3 @@ mat-error{
 .login-margin {
     margin: 0 12px;
 }
-

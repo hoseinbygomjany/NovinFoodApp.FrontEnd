@@ -3,15 +3,14 @@
     <mat-card-header>
       <div mat-card-avatar class="login-image"></div>
       <mat-card-title>سامانه سفارش غذا</mat-card-title>
-        <mat-card-subtitle>شرکت نوین نویسان</mat-card-subtitle>
-      </mat-card-header>
-    <img mat-card-image src="../../../assets/Images/Body login.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-subtitle>شرکت نوین نویسان</mat-card-subtitle>
+    </mat-card-header>
     <form class="login-form">
       <mat-form-field class="login-full-width">
-        <mat-label>شماره همراه</mat-label>
-        <input type="tel" matInput [formControl]="usernameFormControl" placeholder="مثال:09xxxxxx">
+        <mat-label>نام کاربری</mat-label>
+        <input type="tel" matInput [formControl]="usernameFormControl" placeholder="نام کاربری">
         <mat-error *ngIf="usernameFormControl.hasError('required')">
-          شماره همراه اجباریست
+          نام کاربری اجباریست
         </mat-error>
       </mat-form-field>
     </form>
@@ -28,9 +27,9 @@
     </form>
     <mat-card-content>
     </mat-card-content>
-    <mat-card-actions *ngIf="busy==false">
+    <mat-card-actions class="inpage" *ngIf="busy==false">
       <button (click)="check()" mat-raised-button color="primary">ورود</button>&nbsp;&nbsp;
-      <button mat-raised-button [routerLink]="'/signup'" color="accent">ثبت نام</button>
     </mat-card-actions>
   </mat-card>
+
 </div>

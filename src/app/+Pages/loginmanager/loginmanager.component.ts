@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BackendSecurityService } from 'src/app/+Services/backend-security.service';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-loginmanager',
+  templateUrl: './loginmanager.component.html',
+  styleUrls: ['./loginmanager.component.css']
 })
-export class SigninComponent {
+export class LoginmanagerComponent {
   constructor(private backend: BackendSecurityService,
     private _snackBar: MatSnackBar,
     private router: Router) { }
@@ -22,7 +22,7 @@ export class SigninComponent {
     this.busy = true;
     let username: string | undefined = this.usernameFormControl.value?.toString();
     let password: string | undefined = this.passwordFormControl.value?.toString();
-    this.backend.signin(username ?? '', password ?? '').subscribe(r => {
+    this.backend.loginmanager(username ?? '', password ?? '').subscribe(r => {
 
       let result = r as any;
       if (result.isOk == false) {
@@ -38,16 +38,14 @@ export class SigninComponent {
           localStorage.setItem('token', result.token);
         }
         switch (result.type) {
-          case 'RestaurantOwner':
-            this.router.navigate(['/restaurants']);
-            break;
-          case 'Customer':
-            this.router.navigate(['/customers']);
+          case 'systemAdmin':
+            this.router.navigate(['/admins']);
             break;
         }
       }
       this.busy = false;
     });
   }
-}
 
+
+}

@@ -1,17 +1,7 @@
 #Screen {
     /* background-color: rgb(158, 158, 158); */
-    /* background-image: url('../../../assets/Images/back.jpg'); */
-    background-image: url('../../../assets/Images/p7.jpeg');
+    background-image: url('../../../assets/Images/back.jpg');
     background-position: center;
-
-    background-repeat: no-repeat;
-    background-position: center;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-origin: content-box, padding-box;
 
     min-height: 100vh;
     display: flex;
@@ -32,11 +22,9 @@
 mat-card-title,
 mat-card-subtitle,
 button,
-form,
 mat-form-field,
 mat-label,
-mat-error,
-mat-radio-group{
+mat-error {
     font-family: persian;
 }
 
@@ -56,3 +44,9 @@ mat-radio-group{
     margin: 0 12px;
 }
 
+.inpage {
+    align-items: center;
+    justify-content: center;
+}
+
+  

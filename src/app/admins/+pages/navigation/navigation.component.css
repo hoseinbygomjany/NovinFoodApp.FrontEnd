@@ -1,0 +1,29 @@
+#screen{
+  font-family: persian;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: rgb(242, 242, 242);
+}
+
+.sidenav .mat-toolbar {
+  font-family: persian;
+  background: inherit;
+  background-color: #6233ae;
+  color: aliceblue;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: persian;
+}
+.content{
+  padding: 5px;
+}
+

@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { AdminsRoutingModule } from './admins-routing.module';
 import { AdminsComponent } from './admins.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { NavigationComponent } from './+pages/navigation/navigation.component';
+import { UsersComponent } from './+pages/users/users.component';
+import { DataGridComponent } from '../shared/data-grid/data-grid.component';
 
 
 @NgModule({
   declarations: [
     AdminsComponent,
-    NavigationComponent
+    NavigationComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    DataGridComponent,
   ]
 })
 export class AdminsModule { }
