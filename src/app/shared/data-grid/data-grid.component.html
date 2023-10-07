@@ -1,13 +1,22 @@
 <table class="grid">
     <thead>
         <tr>
-            <th *ngFor="let item of columns">{{item}}</th>
+            <th *ngFor="let item of columns">{{item.title}}</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of data">
-            <td  *ngFor="let cal of columns">{{item[cal]}}</td>
+            <td *ngFor="let cal of columns">
+                <span [ngSwitch]="cal.type">
+                    <span *ngSwitchCase="'text'">{{item[cal.field]}}</span>
+                    <span *ngSwitchCase="'check'">
+                        <mat-checkbox disabled type="checkbox" [checked]="item[cal.field]"></mat-checkbox>
+                    </span>
+                    <span *ngSwitchDefault>{{item[cal.field]}}</span>
+
+                </span>
+            </td>
             <td>
                 <button mat-raised-button color="primary">ویرایش</button>
                 &nbsp;
