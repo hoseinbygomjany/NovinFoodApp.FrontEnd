@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { BackendSecurityService } from 'src/app/+Services/backend-security.service';
 
 @Component({
@@ -22,10 +24,10 @@ export class SignUpComponent {
     // password: [''],
     // fullname: [''],
     // type: [''],
-    username:['',[Validators.required,Validators.maxLength(11),Validators.minLength(8)]],
-    password:['',[Validators.required,Validators.maxLength(100),Validators.minLength(8)]],
-    fullname:['',[Validators.required,Validators.maxLength(100),Validators.minLength(2)]],
-    type:['',[Validators.required]]
+    username: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+    password: ['', [Validators.required, Validators.maxLength(100), Validators.minLength(8)]],
+    fullname: ['', [Validators.required, Validators.maxLength(100), Validators.minLength(2)]],
+    type: ['', [Validators.required]]
   });
   // registerform(){
 
@@ -41,26 +43,33 @@ export class SignUpComponent {
     let password: string | undefined = this.registerform.controls.password.value?.toString();
     let type: number | undefined = Number(this.registerform.controls.type.value?.toString());
     let fullname: string | undefined = this.registerform.controls.fullname.value?.toString();
-    this.backend.signup(username ?? '', password ?? '',fullname ?? '',type??2).subscribe(r => 
-    {
+    this.backend.signup(username ?? '', password ?? '', fullname ?? '', type ?? 2)
+    .pipe(
+      catchError(this.handleError)
+    )
+    .subscribe(r => {
       this._snackBar.open('ثبت با موفقیت انجام شد', '', {
         duration: 4000
-      }).afterDismissed().subscribe(t=>{
+      }).afterDismissed().subscribe(t => {
         this.router.navigate(['/signin']);
       });
     });
     console.log(this.registerform)
   }
-  keyone(PhoneNumber:KeyboardEvent){
-    if (PhoneNumber.key=='a'){
+  handleError(error: HttpErrorResponse){
+    console.log(error)
+    return "OK";
+  }
+  keyone(PhoneNumber: KeyboardEvent) {
+    if (PhoneNumber.key == 'a') {
       PhoneNumber.preventDefault();
     }
   }
 
-  keytow(fullname:KeyboardEvent){
-    if (fullname.key>='0' && fullname.key<='9') {
+  keytow(fullname: KeyboardEvent) {
+    if (fullname.key >= '0' && fullname.key <= '9') {
       fullname.preventDefault();
-      
+
     }
   }
 }

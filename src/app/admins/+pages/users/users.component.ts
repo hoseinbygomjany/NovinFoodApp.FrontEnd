@@ -9,7 +9,7 @@ import { DataGridColumn } from 'src/app/shared/data-grid/data-grid-column';
 export class UsersComponent {
   columns: DataGridColumn[] = [
     {
-      field: 'type',
+      field: 'userType',
       title: 'نوع',
       type:'text'
     }
@@ -38,5 +38,11 @@ export class UsersComponent {
       type:'check'
     }
   ];
+  edit(edit:any){
+    console.log(edit);
+  }
+  remove(remove:any){
+    console.log(remove);
+  }
 
 }

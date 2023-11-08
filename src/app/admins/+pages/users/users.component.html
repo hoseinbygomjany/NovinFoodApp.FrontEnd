@@ -1,5 +1,7 @@
 <app-data-grid
     [datasource]="'https://localhost:7138/list'"
     [columns]="columns"
+    (onEdit)="edit($event)"
+    (onDelete)="remove($event)"
 
 />

@@ -28,3 +28,10 @@
     background-color: #6233ae;
     color: white;
 }
+.serach{
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: none;
+}

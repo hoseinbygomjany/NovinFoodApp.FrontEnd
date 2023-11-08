@@ -4,26 +4,36 @@
             <th *ngFor="let item of columns">{{item.title}}</th>
             <th></th>
         </tr>
+        <tr>
+            <th *ngFor="let item of columns">
+                <input class="serach" matInput type="text" placeholder="جستجو" />
+            </th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of data">
             <td *ngFor="let cal of columns">
-                <span [ngSwitch]="cal.type">
-                    <span *ngSwitchCase="'text'">{{item[cal.field]}}</span>
-                    <span *ngSwitchCase="'check'">
+                <ng-container [ngSwitch]="cal.type">
+                    <ng-container *ngSwitchCase="'text'">{{item[cal.field]}}</ng-container>
+                    <ng-container *ngSwitchCase="'check'">
                         <mat-checkbox disabled type="checkbox" [checked]="item[cal.field]"></mat-checkbox>
-                    </span>
-                    <span *ngSwitchDefault>{{item[cal.field]}}</span>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>{{item[cal.field]}}</ng-container>
 
-                </span>
+                </ng-container>
             </td>
             <td>
-                <button mat-raised-button color="primary">ویرایش</button>
+                <button (click)="onEdit.emit(item)" mat-raised-button color="primary"><svg 
+                    xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                    <path d="M200-200h56l345-345-56-56-345 345v56Zm572-403L602-771l56-56q23-23 56.5-23t56.5 23l56 56q23 23 24 55.5T829-660l-57 57Zm-58 59L290-120H120v-170l424-424 170 170Zm-141-29-28-28 56 56-28-28Z"/></svg>
+                </button>
                 &nbsp;
-                <button mat-raised-button color="warn">حذف</button>
+                <button (click)="onDelete.emit(item)" mat-raised-button color="warn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                    <path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                </button>
             </td>
         </tr>
-
-
     </tbody>
 </table>

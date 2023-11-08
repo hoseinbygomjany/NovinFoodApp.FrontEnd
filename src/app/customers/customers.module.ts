@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomersRoutingModule } from './customers-routing.module';
@@ -14,4 +14,6 @@ import { CustomersComponent } from './customers.component';
     CustomersRoutingModule
   ]
 })
-export class CustomersModule { }
+export class CustomersModule { 
+
+}
